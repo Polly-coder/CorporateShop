@@ -7,12 +7,15 @@ class UserCreate(BaseModel):
     username: str = Field(..., description="Логин")
     password: str = Field(..., description="Пароль")
 
+class UserRequest(BaseModel):
+    username: str = Field(..., description="Логин")
+
 class UserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: int
     username: str
     password: str
-    #inventory: Optional[List[UserItemOut]] = None
+    inventory: Optional[List[UserItemOut]] = None
 
 class Token(BaseModel):
     access_token: str
