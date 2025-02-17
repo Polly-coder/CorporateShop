@@ -3,6 +3,8 @@
 .vscode
 .pytest_cache
 
+/old_migrations
+
 # Игнорирование виртуальной среды Python
 venv/
 .venv/
