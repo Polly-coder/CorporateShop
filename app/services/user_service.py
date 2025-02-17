@@ -2,31 +2,23 @@ from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 from app.models import User, UserItem
 from app.database import async_session_maker
-from app.schemas.items import UserItemOut
+from app.auth.auth import decodeJWT
 
 
 class UserService:
-    @classmethod
-    async def get_user(cls):
-        async with async_session_maker() as session:
-            query = select(User).options(joinedload(User.inventory))
-            #query = select(User)
-            user = await session.execute(query)
-            user_info = user.scalars().all()
-            #return user_info
-            user_data = []
-            for user in user_info:
-                user_dict = user.to_dict()
-                if user.inventory:
-                    ...
-                user_dict['inventory'] = [user.inventory if user.inventory else None]
+    """Класс для работы с пользователями"""
     
     @classmethod
-    async def get_user_by_username(cls, username: str):
+    async def create_user(cls, user_data: dict):
+        pass
         async with async_session_maker() as session:
-            query = select(User).filter_by(username=username)
-            user = await session.execute(query)
-            return user
+            async with session.begin():
+                new_user = User(**user_data)
+                session.add(new_user)
+                await session.flush()
+                new_user_id = new_user.id
+                await session.commit()
+                return new_user_id
         
     @classmethod
     async def get_user_by_name_data(cls, username: str):
@@ -41,3 +33,8 @@ class UserService:
             user_dict = user.to_dict()
             user_dict['inventory'] = [{"type": item.item.type, "amount": item.amount} for item in user.inventory]
             return user_dict
+        
+    @classmethod
+    async def get_current_user(cls, token: str):
+        payload = decodeJWT(token)
+        return await cls.get_user_by_name_data(payload["username"])
