@@ -1,0 +1,23 @@
+.ipynb_checkpoints
+.mypy_cache
+.vscode
+.pytest_cache
+
+# Игнорирование виртуальной среды Python
+venv/
+.venv/
+
+
+# Игнорирование файлов с окружением
+.env
+
+# Игнорирование скомпилированных файлов Python
+__pycache__/
+**/__pycache__/
+
+# Игнорирование настроек проекта для PyCharm
+.idea/
+**/.idea/
+
+# macOS
+.DS_Store
