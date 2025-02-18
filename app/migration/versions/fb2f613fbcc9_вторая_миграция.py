@@ -70,6 +70,26 @@ def upgrade() -> None:
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    # Заполнение таблицы мерча
+    op.bulk_insert(
+        sa.table('items',
+                 sa.column('type', sa.String),
+                 sa.column('coins', sa.String)
+        ),
+        [
+            {'type':'t-shirt', 'cost': 80},
+            {'type':'cup', 'cost': 20},
+            {'type':'book', 'cost': 50},
+            {'type':'pen', 'cost': 10},
+            {'type':'powerbank', 'cost': 200},
+            {'type':'hoody', 'cost': 300},
+            {'type':'umbrella', 'cost': 200},
+            {'type':'socks', 'cost': 10},
+            {'type':'wallet', 'cost': 50},
+            {'type':'pink-hoody', 'cost': 500},
+        ]
+        
+    )
     # ### end Alembic commands ###
 
 

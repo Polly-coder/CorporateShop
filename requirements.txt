@@ -2,10 +2,12 @@ fastapi
 uvicorn
 SQLAlchemy
 databases
-psycopg2
 python-jose
 passlib
-python-dotenv
 httpx
 pytest
 pytest-asyncio
+alembic
+asyncpg
+pydantic-settings
+requests

@@ -1,9 +1,18 @@
 # Сервис для магазина мерча Авито
 
 ## Запуск приложения
-1.
-2.
-3.
+1. Клонировать репозиторий
+```
+git clone https://github.com/Polly-coder/AvitoShop.git
+```
+2. Перейти в папку проекта
+```
+cd AvitoShop
+```
+3. База данных и приложение запускаются через docker-compose
+```
+docker-compose up -d
+```
 
 
 ## REST API
