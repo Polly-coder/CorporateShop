@@ -13,7 +13,8 @@ cd AvitoShop
 ```
 docker-compose up --build
 ```
-
+Приложение будет запущено по адресу http://127.0.0.1:8080
+Документация http://127.0.0.1:8080/docs
 
 ## REST API
 
