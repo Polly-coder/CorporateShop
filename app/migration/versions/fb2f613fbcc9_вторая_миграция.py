@@ -74,7 +74,7 @@ def upgrade() -> None:
     op.bulk_insert(
         sa.table('items',
                  sa.column('type', sa.String),
-                 sa.column('coins', sa.String)
+                 sa.column('cost', sa.Integer)
         ),
         [
             {'type':'t-shirt', 'cost': 80},

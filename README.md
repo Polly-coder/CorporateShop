@@ -11,7 +11,7 @@ cd AvitoShop
 ```
 3. База данных и приложение запускаются через docker-compose
 ```
-docker-compose up -d
+docker-compose up --build
 ```
 
 

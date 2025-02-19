@@ -3,10 +3,13 @@ FROM python:3.11
 WORKDIR /code
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8000
 
-ENTRYPOINT ["./entrypoint.sh"]
+COPY ./entrypoint.sh /code/entrypoint.sh
+RUN chmod +x /code/entrypoint.sh
+
+CMD alembic upgrade head; uvicorn app.main:app --host 0.0.0.0 --reload

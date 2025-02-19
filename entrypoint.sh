@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!bin/sh
 while ! nc -z db 5434; do
     echo "Waiting for database to start..."
     sleep 0.1

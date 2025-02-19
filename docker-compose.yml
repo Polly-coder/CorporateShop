@@ -1,5 +1,18 @@
 services:
-  postgres:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    restart: always
+  db:
     image: postgres:latest
     container_name: postgres_fast_api
     environment:
@@ -8,7 +21,7 @@ services:
       POSTGRES_DB: avito_shop
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - "5434:5432"
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
     deploy:
