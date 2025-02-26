@@ -11,9 +11,10 @@ def token_response(token: str):
         "access_token": token
     }
 
-def signJWT(username: str) -> Dict[str, str]:
+def signJWT(user_data: dict) -> Dict[str, str]:
     payload = {
-        "username": username,
+        "user_id": user_data['user_id'],
+        "username": user_data['username'],
         "expires": time.time() + 9000
     }
     auth_data = get_auth_data()

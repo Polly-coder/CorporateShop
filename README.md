@@ -50,7 +50,7 @@ Response body:
 }
 ```
 **POST api/auth**  
-Создание пользователя и получение JWT-токена  
+Авторизация или создание пользователя и получение JWT-токена  
 
 Request body:
 ```json
@@ -63,5 +63,23 @@ Response body:
 ```json
 {
   "token": "string"
+}
+```
+
+**POST api/sendCoin**  
+Перевод монет другому пользователю  
+Требуется отправка jwt-токена в заголовках запроса
+
+Request body:
+```json
+{
+  "to_user_id": "int",
+  "amount": "int"
+}
+```
+Response body:
+```json
+{
+  "transfer_result": "string"
 }
 ```
