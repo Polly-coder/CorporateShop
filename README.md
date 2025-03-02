@@ -3,7 +3,7 @@
 ## Запуск приложения
 1. Клонировать репозиторий
 ```
-git clone https://github.com/Polly-coder/AvitoShop.git
+git clone https://github.com/Polly-coder/CorporateShop.git
 ```
 2. Перейти в папку проекта
 ```
